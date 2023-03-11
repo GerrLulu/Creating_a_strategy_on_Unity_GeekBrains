@@ -1,12 +1,14 @@
 using Abstractions;
 using System.Linq;
 using UnityEngine;
+using UserControlSystem.UI.Model;
 
-namespace UserControlSystem
+namespace UserControlSystem.UI.Presenter
 {
-    public class MouseInteractionsHandler : MonoBehaviour
+    public class MouseInteractionsPresenter : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
+        [SerializeField] private SelectableValueModel _selectedObject;
 
 
         private void Update()
