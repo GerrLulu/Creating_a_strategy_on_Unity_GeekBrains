@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace UserControlSystem.UI.Model
 {
-    [CreateAssetMenu(fileName = nameof(SelectableValueModel), menuName = "Strategy Game/" + nameof(SelectableValueModel), order = 0)]
-    public class SelectableValueModel : ScriptableObject
+    [CreateAssetMenu(fileName = nameof(SelectableValue), menuName = "Strategy Game/" + nameof(SelectableValue), order = 0)]
+    public class SelectableValue : ScriptableObject
     {
         public ISelecatable CurrentValue { get; private set; }
 
-        public Action<ISelecatable> OnSelected;
+        public event Action<ISelecatable> OnSelected;
 
 
         public void SetValue(ISelecatable value)
@@ -17,6 +17,5 @@ namespace UserControlSystem.UI.Model
             CurrentValue = value;
             OnSelected?.Invoke(value);
         }
-
     }
 }

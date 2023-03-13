@@ -1,13 +1,10 @@
-using Abstractions;
+﻿using Abstractions;
 using UnityEngine;
 
 namespace Core
 {
-    public class MainBuilding : MonoBehaviour, IUnitProducer, ISelecatable
+    public class UnitChomper : MonoBehaviour, ISelecatable
     {
-        [SerializeField] private GameObject _unitPrefab;
-        [SerializeField] private Transform _unitsParent;
-
         [SerializeField] private float _maxHealth = 1000;
         [SerializeField] private Sprite _icon;
 
@@ -30,19 +27,10 @@ namespace Core
             _outline = gameObject.AddComponent<Outline>();
 
             _outline.OutlineMode = Outline.Mode.OutlineAll;
-            _outline.OutlineColor = Color.yellow;
+            _outline.OutlineColor = Color.green;
             _outline.OutlineWidth = 0f;
 
             _outline.enabled = false;
-        }
-
-
-        public void ProduceUnit()
-        {
-            Instantiate(_unitPrefab,
-                new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
-                Quaternion.identity,
-                _unitsParent);
         }
     }
 }

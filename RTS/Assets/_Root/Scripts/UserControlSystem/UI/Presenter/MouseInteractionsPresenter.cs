@@ -8,7 +8,7 @@ namespace UserControlSystem.UI.Presenter
     public class MouseInteractionsPresenter : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-        [SerializeField] private SelectableValueModel _selectedObject;
+        [SerializeField] private SelectableValue _selectedObject;
 
 
         private void Update()
@@ -21,15 +21,12 @@ namespace UserControlSystem.UI.Presenter
             if (hits.Length == 0)
                 return;
 
-            var mainBuilding = hits
-                .Select(hit => hit.collider.GetComponentInParent<IUnitProducer>())
+            var selectable = hits
+                .Select(hit => hit.collider.GetComponentInParent<ISelecatable>())
                 .Where(c => c != null)
                 .FirstOrDefault();
 
-            if (mainBuilding == default)
-                return;
-
-            mainBuilding.ProduceUnit();
+            _selectedObject.SetValue(selectable);
         }
     }
 }
