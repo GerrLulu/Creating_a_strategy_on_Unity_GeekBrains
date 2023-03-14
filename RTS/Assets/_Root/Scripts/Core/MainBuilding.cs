@@ -1,11 +1,12 @@
 using Abstractions;
+using Abstractions.Commands;
+using Abstractions.Commands.CommandInterfaces;
 using UnityEngine;
 
 namespace Core
 {
-    public class MainBuilding : MonoBehaviour, IUnitProducer, ISelecatable
+    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable
     {
-        [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private Transform _unitsParent;
 
         [SerializeField] private float _maxHealth = 1000;
@@ -37,9 +38,9 @@ namespace Core
         }
 
 
-        public void ProduceUnit()
+        public override void ExecuteSpecificCommand(IProduceUnitCommand command)
         {
-            Instantiate(_unitPrefab,
+            Instantiate(command.UnitPrefab,
                 new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
                 Quaternion.identity,
                 _unitsParent);
