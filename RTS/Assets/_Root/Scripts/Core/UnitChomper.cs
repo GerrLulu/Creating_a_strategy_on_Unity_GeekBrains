@@ -14,12 +14,7 @@ namespace Core
         public float Health => _health;
         public float MaxHealth => _maxHealth;
         public Sprite Icon => _icon;
-
-        public Outline Outline
-        {
-            get { return _outline; }
-            set { _outline = value; }
-        }
+        public Outline Outline => _outline;
 
 
         private void Start()
@@ -28,7 +23,7 @@ namespace Core
 
             _outline.OutlineMode = Outline.Mode.OutlineAll;
             _outline.OutlineColor = Color.green;
-            _outline.OutlineWidth = 0f;
+            _outline.OutlineWidth = 5f;
 
             _outline.enabled = false;
         }

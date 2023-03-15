@@ -6,7 +6,7 @@ using UserControlSystem.UI.Model;
 
 namespace UserControlSystem.UI.Presenter
 {
-    public class SelectableUIPresenter : MonoBehaviour
+    public class BottomLeftPresenter : MonoBehaviour
     {
         [SerializeField] private Image _selectedImage;
 
@@ -17,7 +17,6 @@ namespace UserControlSystem.UI.Presenter
         [SerializeField] private Image _sliderFillImage;
 
         [SerializeField] private SelectableValue _selectedValue;
-        private Outline _outline;
 
 
         private void Start()
@@ -45,8 +44,6 @@ namespace UserControlSystem.UI.Presenter
                 var colorSlider = Color.Lerp(Color.red, Color.green, selected.Health / (float)selected.MaxHealth);
                 _sliderBackground.color = colorSlider * 0.5f;
                 _sliderFillImage.color = colorSlider;
-
-                selected.Outline.enabled = true;
             }
         }
     }
