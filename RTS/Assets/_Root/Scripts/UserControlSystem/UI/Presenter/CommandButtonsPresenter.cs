@@ -7,6 +7,7 @@ using UserControlSystem.UI.View;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandInterfaces;
 using Utils.AssetsInjector;
+using UserControlSystem.UnitCommands;
 
 namespace UserControlSystem.UI.Presenter
 {
@@ -50,16 +51,42 @@ namespace UserControlSystem.UI.Presenter
         private void OnButtonClick(ICommandExecutor commandExecutor)
         {
             var unitProducer = commandExecutor as CommandExecutorBase<IProduceUnitCommand>;
-
             if (unitProducer != null)
             {
                 unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommand()));
                 return;
             }
 
+            var attacker = commandExecutor as CommandExecutorBase<IAttackCommand>;
+            if (attacker != null)
+            {
+                attacker.ExecuteSpecificCommand(_context.Inject(new AttackCommand()));
+                return;
+            }
+
+            var move = commandExecutor as CommandExecutorBase<IMoveCommand>;
+            if (move != null)
+            {
+                move.ExecuteSpecificCommand(_context.Inject(new MoveCommand()));
+                return;
+            }
+
+            var patrol = commandExecutor as CommandExecutorBase<IPatrolCommand>;
+            if (patrol != null)
+            {
+                patrol.ExecuteSpecificCommand(_context.Inject(new PatrolCommand()));
+                return;
+            }
+
+            var stop = commandExecutor as CommandExecutorBase<IStopCommand>;
+            if (stop != null)
+            {
+                stop.ExecuteSpecificCommand(_context.Inject(new StopCommand()));
+                return;
+            }
+
             throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(OnButtonClick)}" +
                 $": Unknown type of commands executor: { commandExecutor.GetType().FullName }!");
         }
-
     }
 }
