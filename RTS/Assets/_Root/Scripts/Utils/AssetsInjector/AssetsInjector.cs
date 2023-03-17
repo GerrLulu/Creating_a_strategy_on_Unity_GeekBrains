@@ -11,21 +11,27 @@ namespace Utils.AssetsInjector
         public static T Inject<T>(this AssetsContext context, T target)
         {
             var targetType = target.GetType();
-            var allFields = targetType.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
-            for (int i = 0; i < allFields.Length; i++)
+            while(targetType != null)
             {
-                var fieldInfo = allFields[i];
-                var injectAssetAttribute = fieldInfo.GetCustomAttribute(_injectAssetAttributeType) as InjectAssetAttribute;
+                var allFields = targetType.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
-                if (injectAssetAttribute == null)
-                    continue;
+                for (int i = 0; i < allFields.Length; i++)
+                {
+                    var fieldInfo = allFields[i];
+                    var injectAssetAttribute = fieldInfo.GetCustomAttribute(_injectAssetAttributeType) as InjectAssetAttribute;
 
-                var objectToInject = context.GetObjectOfType(fieldInfo.FieldType, injectAssetAttribute.AssetName);
+                    if (injectAssetAttribute == null)
+                        continue;
 
-                fieldInfo.SetValue(target, objectToInject);
+                    var objectToInject = context.GetObjectOfType(fieldInfo.FieldType, injectAssetAttribute.AssetName);
+
+                    fieldInfo.SetValue(target, objectToInject);
+                }
+
+                targetType = targetType.BaseType;
             }
-
+            
             return target;
         }
     }
