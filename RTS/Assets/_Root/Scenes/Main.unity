@@ -1105,7 +1105,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1663993095}
+  - {fileID: 983770284}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2260,6 +2260,7 @@ MonoBehaviour:
   _eventSystem: {fileID: 191245601}
   _groundClickRMB: {fileID: 11400000, guid: 2185d6888948e4b4aa1bb6cb5ebf0e1f, type: 2}
   _groundTransform: {fileID: 2074506776}
+  _attackableRMB: {fileID: 0}
 --- !u!114 &935691177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2512,6 +2513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbbcf6e267045b043ae0a5d0debc8280, type: 3}
+--- !u!4 &983770284 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1547638037120639341, guid: cbbcf6e267045b043ae0a5d0debc8280, type: 3}
+  m_PrefabInstance: {fileID: 983770283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1043657683
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,11 +3399,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626997969}
   m_CullTransparentMesh: 1
---- !u!4 &1663993095 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3074657719725199962, guid: cbbcf6e267045b043ae0a5d0debc8280, type: 3}
-  m_PrefabInstance: {fileID: 983770283}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1842807807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,6 +3516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _legacyContext: {fileID: 11400000, guid: ecf85830ca639e241ba2a36fda551db2, type: 2}
   _vector3Value: {fileID: 11400000, guid: 2185d6888948e4b4aa1bb6cb5ebf0e1f, type: 2}
+  _attackable: {fileID: 11400000, guid: a14c4bcb129448d4c993fadb5f0fb0bb, type: 2}
+  _selectabl: {fileID: 11400000, guid: 6d9d07d52f4bb3c40902584359fc4b83, type: 2}
 --- !u!1 &1894370661
 GameObject:
   m_ObjectHideFlags: 0
