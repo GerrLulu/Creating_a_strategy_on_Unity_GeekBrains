@@ -15,7 +15,7 @@ namespace UserControlSystem.UI.Presenter
 
         void Start()
         {
-            _selectableValue.OnSelected += OnSelected;
+            _selectableValue.OnNewValue += OnSelected;
 
             //var selectableOutline = _selectableValue.CurrentValue.Outline;
 

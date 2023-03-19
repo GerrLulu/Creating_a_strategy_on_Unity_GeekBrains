@@ -20,12 +20,11 @@ namespace UserControlSystem.UI.Model.CommandCreators
             groundClicks.OnNewValue += OnNewValue;
         }
 
-        private void OnNewValue(Vector3 groundClick)
+        private void OnNewValue(Vector3 groundClicks)
         {
-            _creationCallback?.Invoke(_context.Inject(new MoveCommand(groundClick)));
+            _creationCallback?.Invoke(_context.Inject(new MoveCommand(groundClicks)));
             _creationCallback = null;
         }
-
 
         protected override void ClassSpecificCommandCreation(Action<IMoveCommand> creationCallback) =>
             _creationCallback = creationCallback;

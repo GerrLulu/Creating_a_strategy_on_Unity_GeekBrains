@@ -17,7 +17,7 @@ namespace UserControlSystem.UI.Model.CommandCreators
         [Inject]
         private void Init(AttackableValue groundClicks)
         {
-            groundClicks.OnAttacked += OnAttacked;
+            groundClicks.OnNewValue += OnAttacked;
         }
 
         private void OnAttacked(IAttackeble attackeble)
