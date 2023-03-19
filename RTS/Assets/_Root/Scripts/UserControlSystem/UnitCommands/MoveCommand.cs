@@ -8,9 +8,6 @@ namespace UserControlSystem.UnitCommands
         public Vector3 Target { get; }
 
 
-        public MoveCommand(Vector3 target)
-        {
-            Target = target;
-        }
+        public MoveCommand(Vector3 target) => Target = target;
     }
 }

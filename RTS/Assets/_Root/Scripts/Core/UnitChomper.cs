@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace Core
 {
-    public class UnitChomper : MonoBehaviour, ISelecatable
+    public class UnitChomper : MonoBehaviour, ISelecatable, IAttackeble
     {
         [SerializeField] private float _maxHealth = 1000;
         [SerializeField] private Sprite _icon;
+        [SerializeField] private Transform _pivotPoint;
 
         private float _health = 1000;
         private Outline _outline;
@@ -15,6 +16,7 @@ namespace Core
         public float MaxHealth => _maxHealth;
         public Sprite Icon => _icon;
         public Outline Outline => _outline;
+        public Transform PivotPoint => _pivotPoint;
 
 
         private void Start()

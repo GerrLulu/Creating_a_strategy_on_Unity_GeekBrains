@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable
+    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable, IAttackeble
     {
         [SerializeField] private Transform _unitsParent;
-
+        [SerializeField] private Transform _pivotPoint;
         [SerializeField] private float _maxHealth = 1000;
         [SerializeField] private Sprite _icon;
 
@@ -19,6 +19,7 @@ namespace Core
         public float MaxHealth => _maxHealth;
         public Sprite Icon => _icon;
         public Outline Outline => _outline;
+        public Transform PivotPoint => _pivotPoint;
 
 
         private void Start()

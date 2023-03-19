@@ -1,4 +1,5 @@
-﻿using Abstractions.Commands.CommandInterfaces;
+﻿using Abstractions;
+using Abstractions.Commands.CommandInterfaces;
 using System;
 using UserControlSystem.UnitCommands;
 using Utils.AssetsInjector;
@@ -10,8 +11,30 @@ namespace UserControlSystem.UI.Model.CommandCreators
     {
         [Inject] private AssetsContext _context;
 
+        private Action<IAttackCommand> _creationCallback;
+
+
+        [Inject]
+        private void Init(AttackableValue groundClicks)
+        {
+            groundClicks.OnAttacked += OnAttacked;
+        }
+
+        private void OnAttacked(IAttackeble attackeble)
+        {
+            _creationCallback?.Invoke(_context.Inject(new AttackCommand(attackeble)));
+            _creationCallback = null;
+        }
+
 
         protected override void ClassSpecificCommandCreation(Action<IAttackCommand> creationCallback) =>
-            creationCallback?.Invoke(_context.Inject(new AttackCommand()));
+            _creationCallback = creationCallback;
+
+        public override void ProcessCancel()
+        {
+            base.ProcessCancel();
+
+            _creationCallback = null;
+        }
     }
 }

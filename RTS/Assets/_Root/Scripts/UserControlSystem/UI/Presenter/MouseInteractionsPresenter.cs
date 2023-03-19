@@ -14,6 +14,7 @@ namespace UserControlSystem.UI.Presenter
 
         [SerializeField] private Vector3Value _groundClickRMB;
         [SerializeField] private Transform _groundTransform;
+        [SerializeField] private AttackableValue _attackableRMB;
 
         private Plane _groundPlane;
 
@@ -33,26 +34,35 @@ namespace UserControlSystem.UI.Presenter
                 return;
 
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            var hits = Physics.RaycastAll(ray);
 
             if (Input.GetMouseButtonUp(0))
             {
-                var hits = Physics.RaycastAll(ray);
-
-                if (hits.Length == 0)
-                    return;
-
-                var selectable = hits
-                .Select(hit => hit.collider.GetComponentInParent<ISelecatable>())
-                .Where(c => c != null)
-                .FirstOrDefault();
-
-                _selectedObject.SetValue(selectable);
+                if (IsHit<ISelecatable>(hits, out var selectable))
+                {
+                    _selectedObject.SetValue(selectable);
+                }
+                else
+                {
+                    if (IsHit<IAttackeble>(hits, out var attackeble))
+                        _attackableRMB.SetValue(attackeble);
+                    else if(_groundPlane.Raycast(ray, out var enter))
+                        _groundClickRMB.SetValue(ray.origin + ray.direction * enter);
+                }
             }
-            else
-            {
-                if(_groundPlane.Raycast(ray, out var enter))
-                    _groundClickRMB.SetValue(ray.origin + ray.direction * enter);
-            }
+        }
+
+        private bool IsHit<T>(RaycastHit[] hits, out T result) where T : class
+        {
+            result = default;
+
+            if (hits.Length == 0)
+                return false;
+
+            result = hits.Select(hit => hit.collider.GetComponentInParent<T>())
+                .Where(c => c != null).FirstOrDefault();
+
+            return result != default;
         }
     }
 }
