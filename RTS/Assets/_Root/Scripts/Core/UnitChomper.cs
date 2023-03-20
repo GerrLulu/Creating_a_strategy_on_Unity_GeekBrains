@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class UnitChomper : MonoBehaviour, ISelecatable, IAttackeble
+    public class UnitChomper : MonoBehaviour, ISelecatable, IAttackable
     {
         [SerializeField] private float _maxHealth = 1000;
         [SerializeField] private Sprite _icon;

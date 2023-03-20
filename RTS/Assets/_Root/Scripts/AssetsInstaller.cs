@@ -1,5 +1,7 @@
+using Abstractions;
 using UnityEngine;
 using UserControlSystem.UI.Model;
+using Utils;
 using Utils.AssetsInjector;
 using Zenject;
 
@@ -15,5 +17,7 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
     public override void InstallBindings()
     {
         Container.BindInstances(_legacyContext, _vector3Value, _attackable, _selectabl);
+        Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackable);
+        Container.Bind<IAwaitable<Vector3>>().FromInstance(_vector3Value);
     }
 }

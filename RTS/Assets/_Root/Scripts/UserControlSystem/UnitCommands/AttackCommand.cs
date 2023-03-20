@@ -5,9 +5,9 @@ namespace UserControlSystem.UnitCommands
 {
     public class AttackCommand : IAttackCommand
     {
-        public IAttackeble Target { get; }
+        public IAttackable Target { get; }
 
 
-        public AttackCommand(IAttackeble target) => Target = target;
+        public AttackCommand(IAttackable target) => Target = target;
     }
 }

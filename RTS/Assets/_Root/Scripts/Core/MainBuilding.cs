@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable, IAttackeble
+    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable, IAttackable
     {
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private Transform _pivotPoint;

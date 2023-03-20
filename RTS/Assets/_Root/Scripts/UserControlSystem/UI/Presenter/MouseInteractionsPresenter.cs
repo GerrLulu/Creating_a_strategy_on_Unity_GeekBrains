@@ -44,7 +44,7 @@ namespace UserControlSystem.UI.Presenter
                 }
                 else
                 {
-                    if (IsHit<IAttackeble>(hits, out var attackeble))
+                    if (IsHit<IAttackable>(hits, out var attackeble))
                         _attackableRMB.SetValue(attackeble);
                     else if(_groundPlane.Raycast(ray, out var enter))
                         _groundClickRMB.SetValue(ray.origin + ray.direction * enter);

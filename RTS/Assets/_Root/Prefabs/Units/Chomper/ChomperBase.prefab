@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 4176177223637224865}
   - component: {fileID: 2613386066619619874}
   - component: {fileID: 5538539460512576763}
+  - component: {fileID: 2432454485489260951}
   m_Layer: 0
   m_Name: ChomperBase
   m_TagString: Untagged
@@ -2101,7 +2102,7 @@ Animator:
   m_GameObject: {fileID: 4598510019583341973}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01c2989a9f1909e47809809f85d3807b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2188,6 +2189,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb5b8c74e94764a9e7942254cf0267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &2432454485489260951
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598510019583341973}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4598510019583341975
 GameObject:
   m_ObjectHideFlags: 0

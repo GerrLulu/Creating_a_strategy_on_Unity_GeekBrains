@@ -1,6 +1,6 @@
 ﻿using Abstractions.Commands;
 using Abstractions.Commands.CommandInterfaces;
-using UnityEngine;
+using UnityEngine.AI;
 
 namespace Core.CommandExecutors
 {
@@ -8,7 +8,7 @@ namespace Core.CommandExecutors
     {
         public override void ExecuteSpecificCommand(IMoveCommand command)
         {
-            Debug.Log($"Move to {command.Target}");
+            GetComponent<NavMeshAgent>().destination = command.Target;
         }
     }
 }
