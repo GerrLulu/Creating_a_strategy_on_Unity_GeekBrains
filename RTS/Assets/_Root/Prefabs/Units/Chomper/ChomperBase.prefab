@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 4176177223637224865}
   - component: {fileID: 2613386066619619874}
   - component: {fileID: 5538539460512576763}
+  - component: {fileID: -7632908571142177309}
   - component: {fileID: 2432454485489260951}
   m_Layer: 0
   m_Name: ChomperBase
@@ -2138,6 +2139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597dfc1840c65eb498901dfc1fd56ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stop: {fileID: -7632908571142177309}
+  _animator: {fileID: 4598510019590719063}
 --- !u!114 &360744851859693596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2189,6 +2192,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb5b8c74e94764a9e7942254cf0267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7632908571142177309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598510019583341973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90c1e5e30719a94f9e9e7e0d0eaf679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 2432454485489260951}
 --- !u!195 &2432454485489260951
 NavMeshAgent:
   m_ObjectHideFlags: 0

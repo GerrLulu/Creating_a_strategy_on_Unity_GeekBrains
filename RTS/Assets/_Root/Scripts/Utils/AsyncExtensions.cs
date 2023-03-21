@@ -30,7 +30,8 @@ namespace Utils
         }
 
 
-        public static async Task<TResult> WithCancellation<TResult>(this IAwaitable<TResult> originalTask, CancellationToken ct) =>
+        public static async Task<TResult> WithCancellation<TResult>(this IAwaitable<TResult> originalTask,
+            CancellationToken ct) =>
             await WithCancellation(originalTask.AsTask(), ct);
     }
 }

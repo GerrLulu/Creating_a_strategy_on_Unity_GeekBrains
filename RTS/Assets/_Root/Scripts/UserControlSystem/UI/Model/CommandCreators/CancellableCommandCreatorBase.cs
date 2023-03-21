@@ -24,8 +24,7 @@ namespace UserControlSystem.UI.Model.CommandCreators
             try
             {
                 var argument = await _awaitableArgument.WithCancellation(_ctSource.Token);
-                creationCallback?
-                .Invoke(_context.Inject(CreateCommand(argument)));
+                creationCallback?.Invoke(_context.Inject(CreateCommand(argument)));
             }
             catch { }
         }
@@ -35,6 +34,7 @@ namespace UserControlSystem.UI.Model.CommandCreators
         public override void ProcessCancel()
         {
             base.ProcessCancel();
+
             if (_ctSource != null)
             {
                 _ctSource.Cancel();
