@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7640419103626058689}
   - component: {fileID: 7640419103639048033}
+  - component: {fileID: 3245115613401982094}
   m_Layer: 0
   m_Name: VegetationSmall06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7640419103626058689
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7640419103623633191}
   m_Enabled: 1
+--- !u!65 &3245115613401982094
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640419103625889761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2568039, y: 1.0191, z: 1}
+  m_Center: {x: -0.007949114, y: 0.4628738, z: 1.911693e-12}
 --- !u!1 &7640419103625889763
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,8 +91,8 @@ GameObject:
   m_Name: VegetationSmall06_LOD00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7640419103626058691
 Transform:
@@ -160,8 +174,8 @@ GameObject:
   m_Name: VegetationSmall06_LOD01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7640419103626058693
 Transform:
@@ -243,8 +257,8 @@ GameObject:
   m_Name: VegetationSmall06_LOD02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7640419103626058695
 Transform:

@@ -6,12 +6,9 @@ namespace UserControlSystem.UI.Model
 {
     public abstract class ScriptableObjectValueBase<T> : ScriptableObject, IAwaitable<T>
     {
-        public class NewValueNotifier <TAwaited> : IAwaiter<TAwaited>
+        public class NewValueNotifier <TAwaited> : AwaiterBase<TAwaited>
         {
             private readonly ScriptableObjectValueBase<TAwaited> _scriptableObjectValueBase;
-            private TAwaited _result;
-            private Action _continuation;
-            private bool _isCompleted;
 
 
             public NewValueNotifier(ScriptableObjectValueBase<TAwaited> scriptableObjectValueBase)
@@ -23,21 +20,8 @@ namespace UserControlSystem.UI.Model
             private void OnNewValue(TAwaited obj)
             {
                 _scriptableObjectValueBase.OnNewValue -= OnNewValue;
-                _result = obj;
-                _isCompleted = true;
-                _continuation?.Invoke();
+                OnWaitFinish(obj);
             }
-
-            public void OnCompleted(Action continuation)
-            {
-                if (_isCompleted)
-                    continuation?.Invoke();
-                else
-                    _continuation = continuation;
-            }
-
-            public bool IsCompleted => _isCompleted;
-            public TAwaited GetResult() => _result;
         }
 
         public T CurrentValue { get; private set; }
