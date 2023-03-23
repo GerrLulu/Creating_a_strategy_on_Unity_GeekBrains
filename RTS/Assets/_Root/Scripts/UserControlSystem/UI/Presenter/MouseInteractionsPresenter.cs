@@ -1,8 +1,10 @@
 using Abstractions;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UserControlSystem.UI.Model;
+using Zenject;
 
 namespace UserControlSystem.UI.Presenter
 {
@@ -19,37 +21,44 @@ namespace UserControlSystem.UI.Presenter
         private Plane _groundPlane;
 
 
-        private void Start()
+        [Inject]
+        private void Init()
         {
             _groundPlane = new Plane(_groundTransform.up, 0);
-        }
 
+            var nonBlockedFramesStream = Observable.EveryUpdate()
+                .Where(_ => !_eventSystem.IsPointerOverGameObject());
 
-        private void Update()
-        {
-            if (!Input.GetMouseButtonUp(0) && !Input.GetMouseButton(1))
-                return;
+            var leftClicksStream = nonBlockedFramesStream
+                .Where(_ => Input.GetMouseButtonDown(0));
+            var rightClicksStream = nonBlockedFramesStream
+                .Where(_ => Input.GetMouseButtonDown(1));
 
-            if (_eventSystem.IsPointerOverGameObject())
-                return;
+            var lmbRays = leftClicksStream
+                .Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+            var rmbRays = rightClicksStream
+                .Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
 
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            var hits = Physics.RaycastAll(ray);
+            var lmbHitsStream = lmbRays
+                .Select(ray => Physics.RaycastAll(ray));
+            var rmbHitsStream = rmbRays
+                .Select(ray => (ray, Physics.RaycastAll(ray)));
 
-            if (Input.GetMouseButtonUp(0))
+            lmbHitsStream.Subscribe(hits =>
             {
                 if (IsHit<ISelecatable>(hits, out var selectable))
-                {
                     _selectedObject.SetValue(selectable);
-                }
-                else
-                {
-                    if (IsHit<IAttackable>(hits, out var attackeble))
-                        _attackableRMB.SetValue(attackeble);
-                    else if(_groundPlane.Raycast(ray, out var enter))
-                        _groundClickRMB.SetValue(ray.origin + ray.direction * enter);
-                }
-            }
+            });
+
+            rmbHitsStream.Subscribe(date =>
+            {
+                var (ray, hits) = date;
+
+                if (IsHit<IAttackable>(hits, out var attackeble))
+                    _attackableRMB.SetValue(attackeble);
+                else if (_groundPlane.Raycast(ray, out var enter))
+                    _groundClickRMB.SetValue(ray.origin + ray.direction * enter);
+            });
         }
 
         private bool IsHit<T>(RaycastHit[] hits, out T result) where T : class

@@ -1,6 +1,4 @@
 ﻿using Abstractions;
-using System;
-using System.Collections;
 using UnityEngine;
 using UserControlSystem.UI.Model;
 
@@ -16,15 +14,6 @@ namespace UserControlSystem.UI.Presenter
         void Start()
         {
             _selectableValue.OnNewValue += OnSelected;
-
-            //var selectableOutline = _selectableValue.CurrentValue.Outline;
-
-            //selectableOutline.OutlineMode = Outline.Mode.OutlineAll;
-            //selectableOutline.OutlineColor = Color.green;
-            //selectableOutline.OutlineWidth = 5;
-
-            //selectableOutline.enabled = false;
-
             OnSelected(_selectableValue.CurrentValue);
         }
 

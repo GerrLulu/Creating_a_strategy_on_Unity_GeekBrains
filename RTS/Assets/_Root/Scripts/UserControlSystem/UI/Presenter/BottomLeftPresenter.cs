@@ -2,7 +2,9 @@ using TMPro;
 using Abstractions;
 using UnityEngine;
 using UnityEngine.UI;
-using UserControlSystem.UI.Model;
+using Zenject;
+using System;
+using UniRx;
 
 namespace UserControlSystem.UI.Presenter
 {
@@ -16,13 +18,12 @@ namespace UserControlSystem.UI.Presenter
         [SerializeField] private Image _sliderBackground;
         [SerializeField] private Image _sliderFillImage;
 
-        [SerializeField] private SelectableValue _selectedValue;
+        [Inject] private IObservable<ISelecatable> _selectedValue;
 
 
         private void Start()
         {
-            _selectedValue.OnNewValue += OnSelected;
-            OnSelected(_selectedValue.CurrentValue);
+            _selectedValue.Subscribe(OnSelected);
         }
 
 
