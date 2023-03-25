@@ -2,10 +2,9 @@ using UnityEngine;
 
 namespace Abstractions
 {
-    public interface ISelecatable : IHealthHolder
+    public interface ISelecatable : IHealthHolder, IIconHolder
     {
         Transform PivotPoint { get; }
-        Sprite Icon { get; }
         Outline Outline { get; }
     }
 }

@@ -33,6 +33,9 @@ namespace UserControlSystem.UI.Model
                 .To<StopCommandCreator>().AsTransient();
 
             Container.Bind<CommandButtonsModel>().AsTransient();
+
+            Container.Bind<float>().WithId("ChomperBase").FromInstance(5f);
+            Container.Bind<string>().WithId("ChomperBase").FromInstance("ChomperBase");
         }
     }
 }
