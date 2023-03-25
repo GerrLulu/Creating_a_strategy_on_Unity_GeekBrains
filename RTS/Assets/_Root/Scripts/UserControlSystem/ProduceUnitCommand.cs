@@ -6,7 +6,7 @@ namespace UserControlSystem
 {
     public class ProduceUnitCommand : IProduceUnitCommand
     {
-        [InjectAsset("Chomper")] private GameObject _unitPrefab;
+        [InjectAsset("ChomperBase")] private GameObject _unitPrefab;
 
         public GameObject UnitPrefab => _unitPrefab;
     }

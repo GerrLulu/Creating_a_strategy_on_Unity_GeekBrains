@@ -20,6 +20,6 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
         Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackable);
         Container.Bind<IAwaitable<Vector3>>().FromInstance(_vector3Value);
         Container.Bind<IObservable<ISelecatable>>().FromInstance(_selectabl);
-        Container.BindInstances(_legacyContext, _selectabl);
+        Container.BindInstances(_legacyContext);
     }
 }
