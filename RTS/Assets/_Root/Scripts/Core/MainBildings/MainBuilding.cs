@@ -20,6 +20,7 @@ namespace Core.MainBildings
         public Sprite Icon => _icon;
         public Outline Outline => _outline;
         public Transform PivotPoint => _pivotPoint;
+        public Vector3 RallyPoint {  get; set; }
 
 
         private void Start()

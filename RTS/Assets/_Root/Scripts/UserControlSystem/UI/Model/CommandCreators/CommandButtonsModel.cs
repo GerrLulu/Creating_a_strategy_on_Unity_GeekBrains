@@ -15,6 +15,7 @@ namespace UserControlSystem.UI.Model.CommandCreators
         [Inject] private CommandCreatorBase<IStopCommand> _stopper;
         [Inject] private CommandCreatorBase<IMoveCommand> _mover;
         [Inject] private CommandCreatorBase<IPatrolCommand> _patroller;
+        [Inject] private CommandCreatorBase<ISetRallyPointCommand> _setRally;
         
         public event Action<ICommandExecutor> OnCommandAccepted;
         public event Action OnCommandSent;
@@ -38,6 +39,8 @@ namespace UserControlSystem.UI.Model.CommandCreators
             _mover.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
 
             _patroller.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+
+            _setRally.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
         }
 
         public void ExecuteCommandWrapper(object command, ICommandsQueue commandsQueue)
@@ -63,6 +66,7 @@ namespace UserControlSystem.UI.Model.CommandCreators
             _stopper.ProcessCancel();
             _mover.ProcessCancel();
             _patroller.ProcessCancel();
+            _setRally.ProcessCancel();
             OnCommandCancel?.Invoke();
         }
     }

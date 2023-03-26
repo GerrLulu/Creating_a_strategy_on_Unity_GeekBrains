@@ -23,6 +23,8 @@ namespace UserControlSystem.UI.Model
 
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCreator>().AsTransient();
+            Container.Bind<CommandCreatorBase<ISetRallyPointCommand>>()
+                .To<SetRallyPointCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>()
                 .To<AttackCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IMoveCommand>>()

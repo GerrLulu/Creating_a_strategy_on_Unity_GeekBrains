@@ -1,10 +1,12 @@
 ﻿using Abstractions;
+using Abstractions.Commands;
 using Abstractions.Commands.CommandInterfaces;
+using Core.MainBildings;
 using Core.UnitsChomper;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Zenject;
 
 namespace Core.CommandExecutors
 {
@@ -12,6 +14,8 @@ namespace Core.CommandExecutors
     {
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private int _maximumUnitsInQueue = 6;
+
+        [Inject] DiContainer _diContainer;
 
         private ReactiveCollection<IUnitProductionTask> _queue = new ReactiveCollection<IUnitProductionTask>();
 
@@ -29,9 +33,13 @@ namespace Core.CommandExecutors
             if (innerTask.TimeLeft <= 0)
             {
                 RemoveTaskAtIndex(0);
-                Instantiate(innerTask.UnitPrefab,
-                    new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
+
+                var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position,
                     Quaternion.identity, _unitsParent);
+                var queue = instance.GetComponent<ICommandsQueue>();
+                var mainBuilding = GetComponent<MainBuilding>();
+                queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
+
             }
         }
 
