@@ -1,7 +1,7 @@
 ﻿using Abstractions;
 using UnityEngine;
 
-namespace ACore
+namespace Core.UnitsChomper
 {
     public class UnitProductionTask : IUnitProductionTask
     {

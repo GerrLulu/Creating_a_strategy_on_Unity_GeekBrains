@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Utils;
 
-namespace Core
+namespace Core.UnitsChomper
 {
     public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
     {

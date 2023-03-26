@@ -1,6 +1,7 @@
-﻿using Abstractions.Commands;
-using Abstractions.Commands.CommandInterfaces;
+﻿using Abstractions.Commands.CommandInterfaces;
+using Core.UnitsChomper;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils;
@@ -17,7 +18,7 @@ namespace Core.CommandExecutors
         private readonly int Idle = Animator.StringToHash("Idle");
 
 
-        public override async void ExecuteSpecificCommand(IMoveCommand command)
+        public override async Task ExecuteSpecificCommand(IMoveCommand command)
         {
             GetComponent<NavMeshAgent>().destination = command.Target;
             _animator.SetTrigger(Walk);

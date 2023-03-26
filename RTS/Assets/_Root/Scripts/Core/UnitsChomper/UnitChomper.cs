@@ -1,7 +1,7 @@
 ﻿using Abstractions;
 using UnityEngine;
 
-namespace Core
+namespace Core.UnitsChomper
 {
     public class UnitChomper : MonoBehaviour, ISelecatable, IAttackable
     {

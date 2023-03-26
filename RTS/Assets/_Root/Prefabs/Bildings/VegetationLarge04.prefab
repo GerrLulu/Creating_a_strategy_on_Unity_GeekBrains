@@ -96,6 +96,9 @@ GameObject:
   - component: {fileID: 7676798445386155154}
   - component: {fileID: 8644287672967426598}
   - component: {fileID: -7881832079085098772}
+  - component: {fileID: 2723821164610287462}
+  - component: {fileID: 1070296537315551429}
+  - component: {fileID: 3415000203021081281}
   m_Layer: 0
   m_Name: VegetationLarge04
   m_TagString: Untagged
@@ -193,6 +196,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitsParent: {fileID: 2172021427341904800}
   _maximumUnitsInQueue: 6
+--- !u!114 &2723821164610287462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81089786966750786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1a4bf5ac4310b47a763a278091a1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1070296537315551429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81089786966750786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 3415000203021081281}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &3415000203021081281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81089786966750786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836d1d57e8134714e9a8275fb1662748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &81089786966750788
 GameObject:
   m_ObjectHideFlags: 0

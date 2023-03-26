@@ -1,9 +1,9 @@
 using Abstractions;
-using Abstractions.Commands;
 using Abstractions.Commands.CommandInterfaces;
+using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Core
+namespace Core.MainBildings
 {
     public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable, IAttackable
     {
@@ -34,7 +34,7 @@ namespace Core
         }
 
 
-        public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+        public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
             Instantiate(command.UnitPrefab,
                 new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),

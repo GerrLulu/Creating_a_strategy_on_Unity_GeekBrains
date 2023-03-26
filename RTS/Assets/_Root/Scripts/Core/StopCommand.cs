@@ -1,6 +1,6 @@
 ﻿using Abstractions.Commands.CommandInterfaces;
 
-namespace UserControlSystem.UnitCommands
+namespace Core
 {
     public class StopCommand : IStopCommand
     {

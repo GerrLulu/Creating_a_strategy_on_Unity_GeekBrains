@@ -29,6 +29,9 @@ namespace UniRx
             return source.SubscribeWithState(selectable, (x, s) => s.interactable = x);
         }
 
+        public static IDisposable Subscribe<T1>(this IObservable<CollectionAddEvent<T1>> source, Action<T1, int> onNext) =>
+                ObservableExtensions.Subscribe(source, t => onNext(t.Value, t.Index));
+
         /// <summary>Observe onClick event.</summary>
         public static IObservable<Unit> OnClickAsObservable(this Button button)
         {
