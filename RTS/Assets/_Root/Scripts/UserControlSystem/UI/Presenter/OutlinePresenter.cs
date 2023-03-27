@@ -29,6 +29,9 @@ namespace UserControlSystem.UI.Presenter
                 selecatable.Outline.enabled = true;
             else
                 selecatable.Outline.enabled = false;
+
+            if(this == null)
+                return;
         }
     }
 }
