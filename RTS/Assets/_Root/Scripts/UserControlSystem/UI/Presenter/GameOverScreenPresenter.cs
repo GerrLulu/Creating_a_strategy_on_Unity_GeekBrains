@@ -5,7 +5,7 @@ using UnityEngine;
 using Zenject;
 using UniRx;
 
-namespace Assets._Root.Scripts.UserControlSystem.UI.Presenter
+namespace UserControlSystem.UI.Presenter
 {
     public class GameOverScreenPresenter : MonoBehaviour
     {

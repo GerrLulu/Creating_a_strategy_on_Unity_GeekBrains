@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.UnitsChomper
 {
-    public class UnitChomper : MonoBehaviour, ISelecatable, IAttackable, IUnit
+    public class UnitChomper : MonoBehaviour, ISelecatable, IAttackable, IUnit, IAutomaticAttacker
     {
         [SerializeField] private float _maxHealth = 1000;
         [SerializeField] private Sprite _icon;
@@ -12,7 +12,7 @@ namespace Core.UnitsChomper
         [SerializeField] private Animator _animator;
         [SerializeField] private StopCommandExecutor _stopCommand;
         [SerializeField] private int _damage = 25;
-
+        [SerializeField] private float _visiomRadius = 8f;
 
         private float _health = 1000;
         private Outline _outline;
@@ -23,6 +23,7 @@ namespace Core.UnitsChomper
         public Outline Outline => _outline;
         public Transform PivotPoint => _pivotPoint;
         public int Damage => _damage;
+        public float VisionRadius => _visiomRadius;
 
 
         private void Start()

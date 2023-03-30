@@ -10,6 +10,8 @@ namespace Core.MainBildings
         [Inject] CommandExecutorBase<IProduceUnitCommand> _produceUnitCommandExecutor;
         [Inject] CommandExecutorBase<ISetRallyPointCommand> _setRallyPointCommandExecutor;
 
+        public ICommand CurrentCommand => default;
+
 
         public void Clear() { }
         public async void EnqueueCommand(object command)
